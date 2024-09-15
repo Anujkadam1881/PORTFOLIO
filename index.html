@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 1s ease-in-out;
+        }
+        header {
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            background-image: url('image3.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.5s;
+        }
+        nav a:hover {
+            color: #f0a500;
+        }
+        .home-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 150px); /* Adjust for footer */
+            text-align: center;
+            background-image: url('image2.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+        }
+        .home-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        .home-section h2 {
+            font-size: 30px; /* Smaller font for "Hello, I am Anuj" */
+            margin-bottom: 10px;
+            animation: slideDown 1s ease-in-out;
+            color: white;
+        }
+        .home-section h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+            animation: fadeInText 1s ease-in-out 0.5s;
+            color: white;
+        }
+        .home-section p {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            animation: fadeInText 1s ease-in-out 1s;
+            color: white;
+        }
+        .resume-btn {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.5s ease-in-out;
+            margin-top: 20px;
+        }
+        .resume-btn:hover {
+            background-color: #333;
+        }
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>PORTFOLIO</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="education.html">Education</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Home Section with Background Image and Centered Content -->
+    <section class="home-section">
+        <h2>Hello, I am Anuj Kadam</h2>
+        <h1>WELCOME TO MY PORTFOLIO</h1>
+        <p>B.Tech CSE Student | AI Enthusiast | Tech Lover</p>
+        <!-- Download Resume Button -->
+        <button class="resume-btn" onclick="window.location.href='https://drive.google.com/drive/folders/1sN1bWo40Iwf1dQp7ewoOR_BElx1_SWi3?usp=sharing'">Download Resume</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Anuj Kadam. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
