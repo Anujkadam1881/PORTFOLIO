@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            animation: fadeIn 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
+        }
+
+        header {
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            background-image: url('image3.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.5s;
+        }
+
+        nav a:hover {
+            color: #f0a500;
+        }
+
+        section {
+            padding: 40px;
+            background-image: url('image2.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            animation: slideIn 1s ease-in-out;
+            color: white; /* Text color for readability */
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding-bottom: 100px; /* Ensure space for footer */
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 36px; /* Increase the font size */
+            color: black; /* Title in black */
+            font-family: 'Arial Black', sans-serif; /* Arial Black font */
+            animation: zoomIn 1s ease-in-out;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .project-info img {
+            width: 50%; /* Reduce the size of images to 50% of their original size */
+            height: auto;
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+
+        .project-description {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.8); /* Light background for readability */
+            border-radius: 10px;
+            padding: 20px;
+            color: black; /* Text color for readability */
+            font-size: 16px; /* Font size for readability */
+            line-height: 1.6; /* Line height for better readability */
+            text-align: center; /* Center text in the description */
+        }
+
+        .project-description p {
+            margin: 10px 0;
+        }
+
+        .project-description .info-heading {
+            font-weight: bold;
+            font-size: 18px; /* Slightly larger font size */
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        footer {
+            background-color: black;
+            color: black; /* Text color for the footer */
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto; /* Pushes footer to the bottom of the page */
+            transition: color 0.5s ease, background-color 0.5s ease;
+        }
+
+        footer:hover {
+            color: #f0a500; /* Change text color on hover */
+            background-color: #333; /* Change background color on hover */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Portfolio</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="education.html">Education</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Projects Section -->
+    <section>
+        <h2>Projects</h2>
+
+        <!-- Gene Topology Project Info -->
+        <div class="project-info">
+            <img src="image5.jpg" alt="Gene Topology Project Image">
+            <div class="project-description">
+                <p class="info-heading">• Gene Topology:</p>
+                <p>The International Cell Processing Company (ICPC) is a world leader in the analysis of genetic sequences. A genetic sequence is a string containing only the letters A, C, G, and T, each representing a nucleotide (Adenine, Cytosine, Guanine, and Thymine, respectively).</p>
+                <p>ICPC has developed a technique called Genetically Optimized Organic Folding (GOOF) to simplify genetic sequences. The technique identifies specific folding points within a sequence where the sequence reads the same in both directions from the point of folding. Folding at these points merges identical nucleotides, resulting in a simplified sequence.</p>
+                <p>Our project automates the GOOF process to identify optimal folding points and obtain the shortest possible sequence. This automation helps streamline the analysis and reduces manual effort in finding folding points.</p>
+                <p><a href="https://github.com/Anujkadam1881/GENE-TOPOLOGY" target="_blank">View the Gene Topology project on GitHub</a></p>
+            </div>
+        </div>
+
+        <!-- AI-based Voice Assistant Project Info -->
+        <div class="project-info">
+            <img src="image6.jpg" alt="AI-based Voice Assistant Project Image">
+            <div class="project-description">
+                <p class="info-heading">• AI-based Voice Assistant (Ongoing):</p>
+                <p>This project involves creating an AI-based voice assistant using Python and various machine learning libraries. The assistant is designed to understand and respond to voice commands, making use of natural language processing techniques to provide accurate and useful responses.</p>
+                <p>The project is currently ongoing, and the aim is to enhance the assistant's capabilities, including better voice recognition, more sophisticated responses, and integration with various APIs to provide additional functionalities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Anuj Kadam. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

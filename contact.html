@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            animation: fadeIn 1s ease-in-out;
+            position: relative; /* Ensure footer is positioned relative to body */
+            min-height: 100vh; /* Ensure the body takes at least full viewport height */
+        }
+        header {
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            background-image: url('image3.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.5s;
+        }
+        nav a:hover {
+            color: #f0a500;
+        }
+        section {
+            padding: 40px;
+            animation: slideIn 1s ease-in-out;
+            background-image: url('image2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Ensure background image covers viewport */
+            color: black; /* Default text color for the section */
+            border-radius: 10px;
+            min-height: 100vh; /* Extend the section height to cover the viewport */
+            box-sizing: border-box;
+            padding-bottom: 100px; /* Ensure space for footer */
+        }
+        h2 {
+            text-align: center;
+            font-size: 48px; /* Increase font size for the headline */
+            color: black; /* Title in black */
+            animation: zoomIn 1s ease-in-out;
+        }
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            color: black; /* Text color for paragraphs */
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #f0a500; /* Change link color on hover */
+        }
+        .social-links {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        .social-links li {
+            display: inline-block;
+            margin: 10px;
+        }
+        .social-links a {
+            font-size: 1.5em;
+            color: black; /* Icon color */
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #f0a500; /* Change icon color on hover */
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>PORTFOLIO</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="education.html">Education</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Contact Section -->
+    <section>
+        <h2>CONTACT</h2>
+        <p>Email: <a href="mailto:anujkadam3554@gmail.com">anujkadam3554@gmail.com</a></p>
+        <ul class="social-links">
+            <li><a href="https://www.linkedin.com/in/anuj-kadam-38876825a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://www.instagram.com/anuj_kadam03?igsh=MW00MW10cnV5aWt6Ng==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://github.com/Anujkadam1881" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://x.com/anuj_kadam_03?t=Vkm1H2E0gquEgM-t0ZOxSA&s=08" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Anuj Kadam. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
