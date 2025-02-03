@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Essential for responsive design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of ANUJ DIGAMBAR KADAM - Computer Science & Engineering Student, passionate about coding, AI, and innovative problem solving." />
+  <title>Portfolio - ANUJ DIGAMBAR KADAM</title>
+  <!-- Favicon (replace with your file) -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome CDN (updated to ensure icons are visible) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  <!-- AOS (Animate On Scroll) Library CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <!-- Google Fonts (Pacifico for stylish text) -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    /* ========================
+       Video Background Styling
+       ======================== */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -10; /* Behind all content */
+    }
+    .space-bg {
+      display: none;
+    }
+
+    /* ========================
+       Existing CSS Variables and Styling
+       ======================== */
+    :root {
+      --primary-blue: #007BFF;
+      --light-bg: #f5f7fa;
+      --light-alt: #c3cfe2;
+      --primary-text-light: #000; /* Black text in light mode */
+      --dark-bg-start: #232526;
+      --dark-bg-end: #414345;
+      --primary-text-dark: #fff;  /* White text in dark mode */
+      --accent: #ffdd57;
+      --transition-speed: 0.5s;
+      --highlight-orange: orange;
+      --card-dark-bg: #333; /* Dark background for cards in dark mode */
+      --card-dark-shadow: rgba(255, 255, 255, 0.1);
+    }
+
+    /* New CSS Class for Sky Blue Text with Stylish Font and Effects */
+    .skyblue-text {
+      color: skyblue !important;
+      font-family: 'Pacifico', cursive;
+      transition: color 0.3s ease, transform 0.3s ease;
+      text-shadow: 0 0 5px rgba(135,206,235,0.8);
+    }
+    .skyblue-text:hover {
+      transform: scale(1.05);
+    }
+
+    /* LED text animation for the name */
+    .led-text {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: led-gradient 5s linear infinite;
+      margin-bottom: 20px;
+      display: inline;
+    }
+    @keyframes led-gradient {
+      0% { background-position: 0%; }
+      100% { background-position: 100%; }
+    }
+
+    /* Keyframe animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Reset & Basic Styling */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--light-bg), var(--light-alt));
+      color: var(--primary-text-light);
+      line-height: 1.6;
+      transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+    }
+    .dark-mode {
+      background: linear-gradient(135deg, var(--dark-bg-start), var(--dark-bg-end));
+      color: var(--primary-text-dark);
+    }
+    .dark-mode * { color: var(--primary-text-dark) !important; }
+    body:not(.dark-mode) * { color: var(--primary-text-light) !important; }
+    /* This rule applies to the entire theme toggle and its children */
+    .theme-toggle, .theme-toggle * { color: var(--highlight-orange) !important; }
+    
+    /* Header Styling */
+    header {
+      padding: 20px;
+      background: var(--primary-blue);
+      color: inherit;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background var(--transition-speed) ease;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    header h1 {
+      font-size: 2.8rem; margin-bottom: 10px; letter-spacing: 2px;
+    }
+    
+    /* Fixed Theme Toggle Button using a Bulb Icon */
+    .theme-toggle {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+      z-index: 1000;
+      padding: 8px 12px;
+      border: 2px solid var(--highlight-orange);
+      border-radius: 5px;
+      background: transparent;
+    }
+    .theme-toggle:hover { transform: rotate(20deg); }
+    /* Bulb Icon Styling: set to yellow with a black outline.
+       Added !important to override the global theme-toggle color rule. */
+    .theme-toggle i {
+      color: yellow !important;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+    }
+    
+    /* Main Introduction Area */
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    .profile-pic-container {
+      position: relative;
+      width: 250px; height: 250px; margin: 20px;
+    }
+    .profile-pic-container .profile-pic {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+    .rotating-ring {
+      position: absolute;
+      top: -15px; left: -15px;
+      width: 280px; height: 280px;
+      border: 3px solid var(--highlight-orange);
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--highlight-orange);
+      animation: spin 4s linear infinite;
+    }
+    .profile-text {
+      max-width: 500px;
+      margin: 20px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    .profile-text p { margin-bottom: 12px; }
+    .profile-intro { font-size: 2rem; margin-bottom: 10px; }
+    
+    /* Resume Download Button (Text Only) */
+    .resume-btn {
+      background: var(--highlight-orange);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin: 20px auto;
+      display: block;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    .resume-btn:hover { transform: translateY(-3px); }
+    
+    /* Card Container for Projects */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(14, 50, 62, 0.1);
+      overflow: hidden;
+      max-width: 400px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      position: relative;
+      cursor: pointer;
+    }
+    .dark-mode .card {
+      background: var(--card-dark-bg);
+      box-shadow: 0 2px 8px var(--card-dark-shadow);
+    }
+    .card:hover {
+      transform: perspective(1000px) rotateY(10deg) scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .card img {
+      width: 100%; height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .card img:hover { transform: scale(1.03); }
+    .card .card-content { padding: 15px; }
+    .card .card-content h4 { margin-bottom: 10px; font-size: 1.4rem; }
+    .card .card-content p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .project-links { margin-top: 10px; }
+    .project-links a {
+      font-size: 1.5rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .project-links a:hover {
+      transform: translateY(-3px);
+      color: var(--highlight-orange);
+    }
+    
+    /* Section Styling */
+    section {
+      padding: 40px 20px;
+      background: #fff;
+      margin: 20px auto;
+      max-width: 1000px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .dark-mode section { background: #181212; }
+    section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.2rem;
+      color: inherit;
+    }
+    .content {
+      max-width: 900px;
+      margin: auto;
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: inherit;
+    }
+    .content ul { list-style: disc; margin-left: 20px; }
+    .content li { margin-bottom: 8px; }
+    
+    /* Education Section */
+    .education-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .education-card {
+      display: flex;
+      align-items: center;
+      background: #080000;
+      color: var(--primary-text-dark);
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .education-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .education-image img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .education-image img:hover { transform: scale(1.05); }
+    .education-content { margin-left: 20px; color: inherit; }
+    body:not(.dark-mode) .education-card {
+      background: #f0f0f0;
+      color: var(--primary-text-light) !important;
+    }
+    @media (max-width: 600px) {
+      .education-card { flex-direction: column; text-align: center; }
+      .education-content { margin-left: 0; margin-top: 10px; }
+    }
+    
+    /* Footer Styling */
+    footer {
+      background: var(--primary-blue);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
+      color: inherit;
+    }
+    footer p { margin: 5px 0; }
+    
+    /* Contact Section */
+    #contact .content { text-align: center; }
+    .social-icons i, .project-links i, .fa {
+      color: var(--highlight-orange) !important;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 2.2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-icons a:hover { transform: translateY(-3px); }
+    
+    main { flex: 1; padding-bottom: 100px; }
+    @media (max-width: 768px) {
+      .main-content { flex-direction: column; text-align: center; }
+      .profile-text { max-width: 90%; margin: 10px auto; }
+      .card-container { flex-direction: column; align-items: center; }
+    }
+
+    /* =======================
+       Modal Styling
+    ======================= */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+      animation: modalFadeIn 0.3s ease;
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 600px;
+      position: relative;
+    }
+    .modal-content h2 { margin-bottom: 15px; }
+    .modal-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="dark-mode">
+  <!-- Video Background -->
+  <video class="video-bg" autoplay loop muted playsinline>
+    <source src="background2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <!-- Moving Space-Themed Background (disabled) -->
+  <!-- <div class="space-bg"></div> -->
+  
+  <!-- Header with Title -->
+  <header data-aos="fade-down">
+    <h1>PORTFOLIO</h1>
+  </header>
+  
+  <!-- Fixed Theme Toggle Button using a Bulb Icon -->
+  <div class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode" aria-label="Toggle Light/Dark Mode" tabindex="0">
+    <i class="fa-solid fa-lightbulb"></i>
+  </div>
+  
+  <!-- Main Introduction -->
+  <main>
+    <div class="main-content" data-aos="fade-up">
+      <div class="profile-pic-container">
+        <img src="anuj.jpeg" alt="Portrait of ANUJ DIGAMBAR KADAM" class="profile-pic" loading="lazy" />
+        <div class="rotating-ring"></div>
+      </div>
+      <div class="profile-text">
+        <!-- Using inline styles for sky blue text with added font, transitions, and hover scaling -->
+        <div class="profile-intro" style="color: skyblue !important; font-family: 'Pacifico', cursive; transition: transform 0.3s ease, color 0.3s ease; text-shadow: 0 0 5px rgba(135,206,235,0.8);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          Hey, I am
+        </div>
+        <div class="led-text">ANUJ KADAM</div>
+        <p style="color: skyblue !important; font-family: 'Pacifico', cursive; transition: transform 0.3s ease, color 0.3s ease; text-shadow: 0 0 5px rgba(135,206,235,0.8);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          Computer Science &amp; Engineering Student
+        </p>
+        <p style="color: skyblue !important; font-family: 'Pacifico', cursive; transition: transform 0.3s ease, color 0.3s ease; text-shadow: 0 0 5px rgba(135,206,235,0.8);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          Passionate about Coding &amp; AI
+        </p>
+        <p style="color: skyblue !important; font-family: 'Pacifico', cursive; transition: transform 0.3s ease, color 0.3s ease; text-shadow: 0 0 5px rgba(135,206,235,0.8);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          Innovative Problem Solver
+        </p>
+        <p style="color: skyblue !important; font-family: 'Pacifico', cursive; transition: transform 0.3s ease, color 0.3s ease; text-shadow: 0 0 5px rgba(135,206,235,0.8);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          Lifelong Learner &amp; Tech Enthusiast
+        </p>
+      </div>
+    </div>
+    
+    <!-- Download Resume Button (Text Only) -->
+    <button class="resume-btn" onclick="window.location.href='https://drive.google.com/drive/folders/1sN1bWo40Iwf1dQp7ewoOR_BElx1_SWi3?usp=sharing'" data-aos="zoom-in">
+      Download Resume
+    </button>
+    
+    <!-- Skill Section -->
+    <section id="skills" data-aos="fade-up">
+      <h2>SKILLS</h2>
+      <div class="content">
+        <p>I have experience with a range of technologies, including:</p>
+        <ul>
+          <li><strong>Languages:</strong> Java, Python, C, C++</li>
+          <li><strong>Web Development:</strong> HTML, CSS, JavaScript, MERN Stack (Full Stack)</li>
+          <li><strong>Machine Learning:</strong> ML concepts &amp; popular frameworks</li>
+          <li><strong>Cyber Security:</strong> Best practices in securing applications</li>
+          <li><strong>Databases &amp; DSA:</strong> SQL, Data Structures &amp; Algorithms</li>
+        </ul>
+        <p>Projects like an AI-based voice assistant and a full-stack job portal demonstrate my ability to build end-to-end solutions.</p>
+      </div>
+    </section>
+    
+    <!-- Projects Section with Cards -->
+    <section id="projects" data-aos="fade-up">
+      <h2>PROJECTS</h2>
+      <div class="card-container">
+        <!-- Gene Topology Modal Trigger -->
+        <div class="card" data-aos="flip-left" onclick="openModal('project-gene')">
+          <img src="gene.png" alt="Screenshot of Gene Topology Project" loading="lazy" />
+          <div class="card-content">
+            <h4>Gene Topology (ICPC Problem Statement)</h4>
+            <p>A program to analyze and simplify genetic sequences.</p>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/genetopology" target="_blank" title="View on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- AI-Based Voice Assistant Modal Trigger -->
+        <div class="card" data-aos="flip-left" onclick="openModal('project-ai')">
+          <img src="ai.jfif" alt="Screenshot of AI-Based Voice Assistant" loading="lazy" />
+          <div class="card-content">
+            <h4>AI-Based Voice Assistant (Ongoing)</h4>
+            <p>An AI-driven assistant with speech recognition and NLP.</p>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/aivoiceassistant" target="_blank" title="View on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- CytoAutoCluster Modal Trigger -->
+        <div class="card" data-aos="flip-left" onclick="openModal('project-cyto')">
+          <img src="cytoautocluster.png" alt="Screenshot of CytoAutoCluster Project" loading="lazy" />
+          <div class="card-content">
+            <h4>CytoAutoCluster – Enhancing Cytometry with Deep Learning</h4>
+            <p>Deep learning model to enhance cytometry data analysis.</p>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/cytoautocluster" target="_blank" title="View on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Job Listing Portal Modal Trigger -->
+        <div class="card" data-aos="flip-left" onclick="openModal('project-job')">
+          <img src="job1.png" alt="Screenshot of Job Listing Portal" loading="lazy" />
+          <img src="job2.png" alt="Screenshot of Job Listing Portal" loading="lazy" />
+          <div class="card-content">
+            <h4>Job Listing Portal (MERN Stack)</h4>
+            <p>A full-stack job portal connecting employers and job seekers.</p>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/jobportal" target="_blank" title="View on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education" data-aos="fade-up">
+      <h2>EDUCATION</h2>
+      <div class="education-container">
+        <div class="education-card" data-aos="zoom-in">
+          <div class="education-image">
+            <img src="dyp.jfif" alt="D Y Patil Agriculture and Technical University" loading="lazy" />
+          </div>
+          <div class="education-content">
+            <h4>B.Tech in Computer Science &amp; Engineering</h4>
+            <p>
+              D Y Patil Agriculture and Technical University, Talsande<br />
+              <em>Expected Graduation: 2026</em>
+            </p>
+          </div>
+        </div>
+        <div class="education-card" data-aos="zoom-in">
+          <div class="education-image">
+            <img src="ycwm.jpg" alt="Yashwantrao Chavan Warana Mahavidyalaya (YCWM)" loading="lazy" />
+          </div>
+          <div class="education-content">
+            <h4>12th Grade (State Board)</h4>
+            <p>
+              Ashwantrao Chavan Warana Mahavidyalaya (YCWM) | 2022 | 60.83%
+            </p>
+          </div>
+        </div>
+        <div class="education-card" data-aos="zoom-in">
+          <div class="education-image">
+            <img src="swv.jfif" alt="Shree Warana Vidhyalaya Warnanagar" loading="lazy" />
+          </div>
+          <div class="education-content">
+            <h4>10th Grade (State Board)</h4>
+            <p>
+              Shree Warana Vidhyalaya Warnanagar | 2019 | 87.20%
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Extracurricular Section -->
+    <section id="extracurricular" data-aos="fade-up">
+      <h2>EXTRA CURRICULAR</h2>
+      <div class="content">
+        <ul>
+          <li>Participated in multiple coding competitions to sharpen problem-solving and team collaboration skills.</li>
+          <li>Qualified for the Internship Studios program, gaining hands-on experience with real-world challenges.</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Achievements & Hobbies Section -->
+    <section id="achievements" data-aos="fade-up">
+      <h2>ACHIEVEMENTS &amp; HOBBIES</h2>
+      <div class="content">
+        <ul>
+          <li>Keep up with geopolitical and defense news.</li>
+          <li>Avid sports enthusiast with an interest in global military affairs.</li>
+          <li>Passionate about artificial intelligence and emerging technologies.</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" data-aos="fade-up">
+      <h2>CONTACT</h2>
+      <div class="content">
+        <div class="social-icons">
+          <a href="https://www.instagram.com/__anuj__1881?igsh=d2xuaG4xM3NhYmU=" target="_blank" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/anuj-kadam3554?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" title="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/yourusername" target="_blank" title="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="mailto:anujkadam3554@gmail.com" title="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer Section -->
+  <footer data-aos="fade-up">
+    <p>&copy; 2025 All Rights Reserved</p>
+  </footer>
+  
+  <!-- Modal Structures with Additional Project Information -->
+  <!-- Gene Topology Modal -->
+  <div id="project-gene" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project-gene')">&times;</span>
+      <h2>Gene Topology (ICPC Problem Statement)</h2>
+      <p>
+        Developed a program for the International Cell Processing Company (ICPC) to analyze and simplify genetic sequences, represented as strings of nucleotides (A, C, G, T).
+      </p>
+      <p>
+        Utilized a process called Genetically Optimized Organic Folding (GOOF) to reduce genetic sequence length while preserving key properties for further analysis.
+      </p>
+      <p>
+        Automated the process of finding folding points in sequences and applying transformations to optimize the sequences, significantly reducing manual efforts and time consumption.
+      </p>
+    </div>
+  </div>
+  
+  <!-- AI-Based Voice Assistant Modal -->
+  <div id="project-ai" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project-ai')">&times;</span>
+      <h2>AI-Based Voice Assistant (Ongoing)</h2>
+      <p>
+        Building an AI-based voice assistant using Python, incorporating speech recognition and natural language processing.
+      </p>
+      <p>
+        Implementing machine learning frameworks to enhance voice command accuracy and provide contextual responses.
+      </p>
+    </div>
+  </div>
+  
+  <!-- CytoAutoCluster Modal -->
+  <div id="project-cyto" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project-cyto')">&times;</span>
+      <h2>CytoAutoCluster – Enhancing Cytometry with Deep Learning</h2>
+      <p>
+        Improve cytometry analysis using deep learning techniques. Automate clustering processes in cytometry datasets to enhance accuracy and efficiency in identifying cell populations.
+      </p>
+      <p>
+        <strong>Internship Program:</strong> Infosys Springboard Internship Program 5.0 (October 3, 2024 – December 5, 2024)
+      </p>
+      <p>
+        <strong>Technologies Used:</strong> Python, Machine Learning libraries (TensorFlow, PyTorch, Pandas, NumPy, Scikit-learn), and deep learning models for clustering.
+      </p>
+    </div>
+  </div>
+  
+  <!-- Job Listing Portal Modal -->
+  <div id="project-job" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project-job')">&times;</span>
+      <h2>Job Listing Portal (MERN Stack)</h2>
+      <p>
+        Develop a job search platform with user authentication and job application features.
+      </p>
+      <p>
+        Implement job filtering, AI-powered job recommendations, and resume parsing.
+      </p>
+      <p>
+        <strong>Current Role:</strong> Full Stack Web Development Intern at Infotact Solutions (December 25, 2024 – March 25, 2025)
+      </p>
+      <p>
+        <strong>Features Implemented/Planned:</strong> User Authentication & Profile Management, Job Listings & Search (with filters and sorting), Job Application Tracking & Submission, Full-screen Job Details Page, Dashboards for job seekers and employers, and an Admin Panel.
+      </p>
+      <p>
+        <strong>Tech Stack:</strong> MERN (MongoDB, Express.js, React.js, Node.js), MUI, Datagrid, and Cookies.
+      </p>
+    </div>
+  </div>
+  
+  <!-- AOS Library Script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+    
+    // Toggle Light/Dark Mode using the Bulb Icon
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+    
+    // Modal Functionality
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+    }
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+    
+    // Intersection Observer fallback for sections
+    const sections = document.querySelectorAll('section');
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
