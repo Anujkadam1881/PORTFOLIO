@@ -8,36 +8,38 @@
   <title>Portfolio - ANUJ DIGAMBAR KADAM</title>
   <!-- Favicon (replace with your file) -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <!-- Font Awesome CDN (updated to ensure icons are visible) -->
+  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   <!-- AOS (Animate On Scroll) Library CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-  <!-- Google Fonts (Pacifico for stylish text) -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <!-- Google Fonts: Roboto for professional text styling -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     /* ========================
-       Video Background Styling
+       Particle Background Container Styling
        ======================== */
-    .video-bg {
+    #particles-js {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      z-index: -10; /* Behind all content */
+      z-index: -1; /* Behind all content */
+      background: var(--particles-bg);
     }
-    .space-bg {
-      display: none;
+    /* In dark mode, override the particle container background */
+    .dark-mode #particles-js {
+      background: linear-gradient(135deg, var(--dark-bg-start), var(--dark-bg-end));
     }
 
     /* ========================
-       Existing CSS Variables and Styling
+       CSS Variables & Global Styling
        ======================== */
     :root {
       --primary-blue: #007BFF;
       --light-bg: #f5f7fa;
       --light-alt: #c3cfe2;
+      --particles-bg: linear-gradient(135deg, #f5f7fa, #c3cfe2);
       --primary-text-light: #000; /* Black text in light mode */
       --dark-bg-start: #232526;
       --dark-bg-end: #414345;
@@ -49,32 +51,20 @@
       --card-dark-shadow: rgba(255, 255, 255, 0.1);
     }
 
-    /* New CSS Class for Sky Blue Text with Stylish Font and Effects */
+    /* Font and transition effects for text */
     .skyblue-text {
-      color: skyblue !important;
-      font-family: 'Pacifico', cursive;
+      font-family: 'Roboto', sans-serif;
       transition: color 0.3s ease, transform 0.3s ease;
-      text-shadow: 0 0 5px rgba(135,206,235,0.8);
     }
     .skyblue-text:hover {
       transform: scale(1.05);
     }
-
-    /* LED text animation for the name */
     .led-text {
       font-size: 3rem;
       font-weight: bold;
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-      background-size: 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: led-gradient 5s linear infinite;
+      font-family: 'Roboto', sans-serif;
       margin-bottom: 20px;
       display: inline;
-    }
-    @keyframes led-gradient {
-      0% { background-position: 0%; }
-      100% { background-position: 100%; }
     }
 
     /* Keyframe animations */
@@ -105,28 +95,27 @@
     }
     .dark-mode {
       background: linear-gradient(135deg, var(--dark-bg-start), var(--dark-bg-end));
-      color: var(--primary-text-dark);
     }
     .dark-mode * { color: var(--primary-text-dark) !important; }
     body:not(.dark-mode) * { color: var(--primary-text-light) !important; }
-    /* This rule applies to the entire theme toggle and its children */
     .theme-toggle, .theme-toggle * { color: var(--highlight-orange) !important; }
     
-    /* Header Styling */
+    /* Header Styling (smaller header) */
     header {
-      padding: 20px;
+      padding: 15px;
       background: var(--primary-blue);
-      color: inherit;
       text-align: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       transition: background var(--transition-speed) ease;
       animation: fadeInUp 0.8s ease-out;
     }
     header h1 {
-      font-size: 2.8rem; margin-bottom: 10px; letter-spacing: 2px;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
     }
     
-    /* Fixed Theme Toggle Button using a Bulb Icon */
+    /* Fixed Theme Toggle Button */
     .theme-toggle {
       position: fixed;
       top: 100px;
@@ -141,8 +130,6 @@
       background: transparent;
     }
     .theme-toggle:hover { transform: rotate(20deg); }
-    /* Bulb Icon Styling: set to yellow with a black outline.
-       Added !important to override the global theme-toggle color rule. */
     .theme-toggle i {
       color: yellow !important;
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
@@ -158,34 +145,28 @@
       animation: fadeInUp 0.8s ease-out;
     }
     .profile-pic-container {
-      position: relative;
-      width: 250px; height: 250px; margin: 20px;
+      width: 250px;
+      height: 250px;
+      margin: 20px;
     }
     .profile-pic-container .profile-pic {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       object-fit: cover;
       display: block;
     }
-    .rotating-ring {
-      position: absolute;
-      top: -15px; left: -15px;
-      width: 280px; height: 280px;
-      border: 3px solid var(--highlight-orange);
-      border-radius: 50%;
-      box-shadow: 0 0 15px var(--highlight-orange);
-      animation: spin 4s linear infinite;
-    }
+    /* Profile text container – no extra background */
     .profile-text {
-      max-width: 500px;
+      max-width: 600px;
       margin: 20px;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       text-align: center;
     }
     .profile-text p { margin-bottom: 12px; }
     .profile-intro { font-size: 2rem; margin-bottom: 10px; }
     
-    /* Resume Download Button (Text Only) */
+    /* Resume Download Button */
     .resume-btn {
       background: var(--highlight-orange);
       color: #fff;
@@ -228,12 +209,33 @@
       transform: perspective(1000px) rotateY(10deg) scale(1.02);
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-    .card img {
-      width: 100%; height: auto;
-      display: block;
+    /* Fixed image container for project cards */
+    .card-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: transform 0.3s ease;
     }
-    .card img:hover { transform: scale(1.03); }
+    .card-image img:hover { transform: scale(1.03); }
+    /* For Job Portal card, display two images side-by-side using grid */
+    .card-image.multiple {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      height: 200px;
+      overflow: hidden;
+    }
+    .card-image.multiple img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .card-image.multiple img:hover { transform: scale(1.03); }
     .card .card-content { padding: 15px; }
     .card .card-content h4 { margin-bottom: 10px; font-size: 1.4rem; }
     .card .card-content p {
@@ -264,7 +266,6 @@
       text-align: center;
       margin-bottom: 20px;
       font-size: 2.2rem;
-      color: inherit;
     }
     .content {
       max-width: 900px;
@@ -272,7 +273,6 @@
       text-align: left;
       font-size: 1rem;
       line-height: 1.7;
-      color: inherit;
     }
     .content ul { list-style: disc; margin-left: 20px; }
     .content li { margin-bottom: 8px; }
@@ -306,7 +306,7 @@
       transition: transform 0.3s ease;
     }
     .education-image img:hover { transform: scale(1.05); }
-    .education-content { margin-left: 20px; color: inherit; }
+    .education-content { margin-left: 20px; }
     body:not(.dark-mode) .education-card {
       background: #f0f0f0;
       color: var(--primary-text-light) !important;
@@ -323,14 +323,13 @@
       padding: 20px;
       margin-top: 40px;
       box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
-      color: inherit;
     }
     footer p { margin: 5px 0; }
     
-    /* Contact Section */
+    /* Contact Section with restored icons */
     #contact .content { text-align: center; }
-    .social-icons i, .project-links i, .fa {
-      color: var(--highlight-orange) !important;
+    .social-icons {
+      margin-bottom: 10px;
     }
     .social-icons a {
       margin: 0 10px;
@@ -338,6 +337,9 @@
       transition: color 0.3s ease, transform 0.3s ease;
     }
     .social-icons a:hover { transform: translateY(-3px); }
+    .social-icons i, .project-links i, .fa {
+      color: var(--highlight-orange) !important;
+    }
     
     main { flex: 1; padding-bottom: 100px; }
     @media (max-width: 768px) {
@@ -369,6 +371,8 @@
       width: 80%;
       max-width: 600px;
       position: relative;
+      max-height: 80vh;
+      overflow-y: auto;
     }
     .modal-content h2 { margin-bottom: 15px; }
     .modal-content p {
@@ -385,21 +389,15 @@
   </style>
 </head>
 <body class="dark-mode">
-  <!-- Video Background -->
-  <video class="video-bg" autoplay loop muted playsinline>
-    <source src="background2.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  
-  <!-- Moving Space-Themed Background (disabled) -->
-  <!-- <div class="space-bg"></div> -->
+  <!-- Interactive Particle Background -->
+  <div id="particles-js"></div>
   
   <!-- Header with Title -->
   <header data-aos="fade-down">
     <h1>PORTFOLIO</h1>
   </header>
   
-  <!-- Fixed Theme Toggle Button using a Bulb Icon -->
+  <!-- Fixed Theme Toggle Button -->
   <div class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode" aria-label="Toggle Light/Dark Mode" tabindex="0">
     <i class="fa-solid fa-lightbulb"></i>
   </div>
@@ -409,30 +407,33 @@
     <div class="main-content" data-aos="fade-up">
       <div class="profile-pic-container">
         <img src="anuj.jpeg" alt="Portrait of ANUJ DIGAMBAR KADAM" class="profile-pic" loading="lazy" />
-        <div class="rotating-ring"></div>
       </div>
       <div class="profile-text">
-        <!-- Using inline styles for sky blue text with added font, transitions, and hover scaling -->
-        <div class="profile-intro" style="color: skyblue !important; font-family: 'Pacifico', cursive; transition: transform 0.3s ease, color 0.3s ease; text-shadow: 0 0 5px rgba(135,206,235,0.8);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div class="profile-intro skyblue-text" style="transition: transform 0.3s ease, color 0.3s ease;" 
+             onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           Hey, I am
         </div>
         <div class="led-text">ANUJ KADAM</div>
-        <p style="color: skyblue !important; font-family: 'Pacifico', cursive; transition: transform 0.3s ease, color 0.3s ease; text-shadow: 0 0 5px rgba(135,206,235,0.8);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <p class="skyblue-text" style="transition: transform 0.3s ease, color 0.3s ease;" 
+           onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           Computer Science &amp; Engineering Student
         </p>
-        <p style="color: skyblue !important; font-family: 'Pacifico', cursive; transition: transform 0.3s ease, color 0.3s ease; text-shadow: 0 0 5px rgba(135,206,235,0.8);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <p class="skyblue-text" style="transition: transform 0.3s ease, color 0.3s ease;" 
+           onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           Passionate about Coding &amp; AI
         </p>
-        <p style="color: skyblue !important; font-family: 'Pacifico', cursive; transition: transform 0.3s ease, color 0.3s ease; text-shadow: 0 0 5px rgba(135,206,235,0.8);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <p class="skyblue-text" style="transition: transform 0.3s ease, color 0.3s ease;" 
+           onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           Innovative Problem Solver
         </p>
-        <p style="color: skyblue !important; font-family: 'Pacifico', cursive; transition: transform 0.3s ease, color 0.3s ease; text-shadow: 0 0 5px rgba(135,206,235,0.8);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <p class="skyblue-text" style="transition: transform 0.3s ease, color 0.3s ease;" 
+           onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           Lifelong Learner &amp; Tech Enthusiast
         </p>
       </div>
     </div>
     
-    <!-- Download Resume Button (Text Only) -->
+    <!-- Download Resume Button -->
     <button class="resume-btn" onclick="window.location.href='https://drive.google.com/drive/folders/1sN1bWo40Iwf1dQp7ewoOR_BElx1_SWi3?usp=sharing'" data-aos="zoom-in">
       Download Resume
     </button>
@@ -443,13 +444,11 @@
       <div class="content">
         <p>I have experience with a range of technologies, including:</p>
         <ul>
-          <li><strong>Languages:</strong> Java, Python, C, C++</li>
-          <li><strong>Web Development:</strong> HTML, CSS, JavaScript, MERN Stack (Full Stack)</li>
-          <li><strong>Machine Learning:</strong> ML concepts &amp; popular frameworks</li>
-          <li><strong>Cyber Security:</strong> Best practices in securing applications</li>
-          <li><strong>Databases &amp; DSA:</strong> SQL, Data Structures &amp; Algorithms</li>
+          <li><strong>Programming:</strong> C, C++, Java, Python (+ libraries), HTML, CSS, JavaScript (+ jQuery)</li>
+          <li><strong>Web Development:</strong> MERN Stack, Git, RESTful APIs, Agile</li>
+          <li><strong>Machine Learning &amp; Data Science:</strong> Supervised &amp; semi-supervised learning, PCA, t-SNE, XGBoost, statistical analysis, Gradio</li>
+          <li><strong>Other:</strong> Basic AI, mobile app development, software development methodologies, cybersecurity concepts</li>
         </ul>
-        <p>Projects like an AI-based voice assistant and a full-stack job portal demonstrate my ability to build end-to-end solutions.</p>
       </div>
     </section>
     
@@ -459,10 +458,12 @@
       <div class="card-container">
         <!-- Gene Topology Modal Trigger -->
         <div class="card" data-aos="flip-left" onclick="openModal('project-gene')">
-          <img src="gene.png" alt="Screenshot of Gene Topology Project" loading="lazy" />
+          <div class="card-image">
+            <img src="gene.png" alt="Gene Topology Project" loading="lazy" />
+          </div>
           <div class="card-content">
-            <h4>Gene Topology (ICPC Problem Statement)</h4>
-            <p>A program to analyze and simplify genetic sequences.</p>
+            <h4>Gene Topology (College Project)</h4>
+            <p>Developed algorithms for genetic sequence analysis using advanced data structures for optimal performance.</p>
             <div class="project-links">
               <a href="https://github.com/yourusername/genetopology" target="_blank" title="View on GitHub">
                 <i class="fa-brands fa-github"></i>
@@ -472,10 +473,12 @@
         </div>
         <!-- AI-Based Voice Assistant Modal Trigger -->
         <div class="card" data-aos="flip-left" onclick="openModal('project-ai')">
-          <img src="ai.jfif" alt="Screenshot of AI-Based Voice Assistant" loading="lazy" />
+          <div class="card-image">
+            <img src="ai.jfif" alt="AI-Based Voice Assistant Project" loading="lazy" />
+          </div>
           <div class="card-content">
             <h4>AI-Based Voice Assistant (Ongoing)</h4>
-            <p>An AI-driven assistant with speech recognition and NLP.</p>
+            <p>Designing an intelligent assistant with natural language processing and voice recognition.</p>
             <div class="project-links">
               <a href="https://github.com/yourusername/aivoiceassistant" target="_blank" title="View on GitHub">
                 <i class="fa-brands fa-github"></i>
@@ -485,10 +488,12 @@
         </div>
         <!-- CytoAutoCluster Modal Trigger -->
         <div class="card" data-aos="flip-left" onclick="openModal('project-cyto')">
-          <img src="cytoautocluster.png" alt="Screenshot of CytoAutoCluster Project" loading="lazy" />
+          <div class="card-image">
+            <img src="cytoautocluster.png" alt="CytoAutoCluster Project" loading="lazy" />
+          </div>
           <div class="card-content">
-            <h4>CytoAutoCluster – Enhancing Cytometry with Deep Learning</h4>
-            <p>Deep learning model to enhance cytometry data analysis.</p>
+            <h4>CytoAutoCluster (ML Internship Project)</h4>
+            <p>Implemented a machine learning clustering algorithm for biological data to enhance visualization and processing.</p>
             <div class="project-links">
               <a href="https://github.com/yourusername/cytoautocluster" target="_blank" title="View on GitHub">
                 <i class="fa-brands fa-github"></i>
@@ -496,15 +501,32 @@
             </div>
           </div>
         </div>
-        <!-- Job Listing Portal Modal Trigger -->
+        <!-- Job Portal Modal Trigger -->
         <div class="card" data-aos="flip-left" onclick="openModal('project-job')">
-          <img src="job1.png" alt="Screenshot of Job Listing Portal" loading="lazy" />
-          <img src="job2.png" alt="Screenshot of Job Listing Portal" loading="lazy" />
+          <div class="card-image multiple">
+            <img src="job1.png" alt="Job Portal Project" loading="lazy" />
+            <img src="job2.png" alt="Job Portal Project" loading="lazy" />
+          </div>
           <div class="card-content">
-            <h4>Job Listing Portal (MERN Stack)</h4>
-            <p>A full-stack job portal connecting employers and job seekers.</p>
+            <h4>Job Portal (Internship Project)</h4>
+            <p>Built a full‑stack portal with robust backend database management, efficient API integrations, and a responsive frontend.</p>
             <div class="project-links">
               <a href="https://github.com/yourusername/jobportal" target="_blank" title="View on GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Biometric Auto-Transaction Modal Trigger -->
+        <div class="card" data-aos="flip-left" onclick="openModal('project-atm')">
+          <div class="card-image">
+            <img src="atm.jpeg" alt="Biometric Auto-Transaction Project" loading="lazy" />
+          </div>
+          <div class="card-content">
+            <h4>Biometric Auto-Transaction Machine (IoT College Project)</h4>
+            <p>Developed a fingerprint‑based ATM integrating IoT hardware and software for secure transactions.</p>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/biometric-atm" target="_blank" title="View on GitHub">
                 <i class="fa-brands fa-github"></i>
               </a>
             </div>
@@ -522,22 +544,17 @@
             <img src="dyp.jfif" alt="D Y Patil Agriculture and Technical University" loading="lazy" />
           </div>
           <div class="education-content">
-            <h4>B.Tech in Computer Science &amp; Engineering</h4>
-            <p>
-              D Y Patil Agriculture and Technical University, Talsande<br />
-              <em>Expected Graduation: 2026</em>
-            </p>
+            <h4>B.Tech in Computer Science &amp; Engineering (CSE)</h4>
+            <p>D Y Patil Agriculture &amp; Technical University, Talsande<br /><em>Expected 2026</em></p>
           </div>
         </div>
         <div class="education-card" data-aos="zoom-in">
           <div class="education-image">
-            <img src="ycwm.jpg" alt="Yashwantrao Chavan Warana Mahavidyalaya (YCWM)" loading="lazy" />
+            <img src="ycwm.jpg" alt="YCWM" loading="lazy" />
           </div>
           <div class="education-content">
-            <h4>12th Grade (State Board)</h4>
-            <p>
-              Ashwantrao Chavan Warana Mahavidyalaya (YCWM) | 2022 | 60.83%
-            </p>
+            <h4>12th (HSC)</h4>
+            <p>YCWM | 2022 | 60.83%</p>
           </div>
         </div>
         <div class="education-card" data-aos="zoom-in">
@@ -545,10 +562,8 @@
             <img src="swv.jfif" alt="Shree Warana Vidhyalaya Warnanagar" loading="lazy" />
           </div>
           <div class="education-content">
-            <h4>10th Grade (State Board)</h4>
-            <p>
-              Shree Warana Vidhyalaya Warnanagar | 2019 | 87.20%
-            </p>
+            <h4>10th (SSC)</h4>
+            <p>Shree Warana Vidhyalaya Warnanagar | 2020 | 87.20%</p>
           </div>
         </div>
       </div>
@@ -565,19 +580,18 @@
       </div>
     </section>
     
-    <!-- Achievements & Hobbies Section -->
+    <!-- Achievements & Interests Section -->
     <section id="achievements" data-aos="fade-up">
-      <h2>ACHIEVEMENTS &amp; HOBBIES</h2>
+      <h2>ACHIEVEMENTS &amp; INTERESTS</h2>
       <div class="content">
         <ul>
-          <li>Keep up with geopolitical and defense news.</li>
-          <li>Avid sports enthusiast with an interest in global military affairs.</li>
-          <li>Passionate about artificial intelligence and emerging technologies.</li>
+          <li>Passionate about emerging technologies, AI innovations, global military affairs, and geopolitics</li>
+          <li>Avid reader and continuous learner in technology</li>
         </ul>
       </div>
     </section>
     
-    <!-- Contact Section -->
+    <!-- Contact Section with Restored Icons -->
     <section id="contact" data-aos="fade-up">
       <h2>CONTACT</h2>
       <div class="content">
@@ -595,6 +609,11 @@
             <i class="fa-solid fa-envelope"></i>
           </a>
         </div>
+        <div class="content" style="margin-top:10px; text-align:center;">
+          <p><strong>Anuj Digambar Kadam</strong></p>
+          <p>Email: anujkadam3554@gmail.com</p>
+          <p>Phone: (+91) 7020716915</p>
+        </div>
       </div>
     </section>
   </main>
@@ -609,15 +628,12 @@
   <div id="project-gene" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('project-gene')">&times;</span>
-      <h2>Gene Topology (ICPC Problem Statement)</h2>
+      <h2>Gene Topology (College Project)</h2>
       <p>
-        Developed a program for the International Cell Processing Company (ICPC) to analyze and simplify genetic sequences, represented as strings of nucleotides (A, C, G, T).
+        Developed algorithms for genetic sequence analysis using advanced data structures for optimal performance.
       </p>
       <p>
-        Utilized a process called Genetically Optimized Organic Folding (GOOF) to reduce genetic sequence length while preserving key properties for further analysis.
-      </p>
-      <p>
-        Automated the process of finding folding points in sequences and applying transformations to optimize the sequences, significantly reducing manual efforts and time consumption.
+        This project focused on analyzing genetic sequences efficiently by optimizing data structures and algorithmic approaches.
       </p>
     </div>
   </div>
@@ -628,10 +644,10 @@
       <span class="close" onclick="closeModal('project-ai')">&times;</span>
       <h2>AI-Based Voice Assistant (Ongoing)</h2>
       <p>
-        Building an AI-based voice assistant using Python, incorporating speech recognition and natural language processing.
+        Designing an intelligent assistant with natural language processing and voice recognition.
       </p>
       <p>
-        Implementing machine learning frameworks to enhance voice command accuracy and provide contextual responses.
+        The project involves integrating speech-to-text engines with machine learning models to understand and respond to user commands.
       </p>
     </div>
   </div>
@@ -640,65 +656,119 @@
   <div id="project-cyto" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('project-cyto')">&times;</span>
-      <h2>CytoAutoCluster – Enhancing Cytometry with Deep Learning</h2>
+      <h2>CytoAutoCluster (ML Internship Project)</h2>
       <p>
-        Improve cytometry analysis using deep learning techniques. Automate clustering processes in cytometry datasets to enhance accuracy and efficiency in identifying cell populations.
+        Implemented a machine learning clustering algorithm for biological data to enhance visualization and processing.
       </p>
       <p>
-        <strong>Internship Program:</strong> Infosys Springboard Internship Program 5.0 (October 3, 2024 – December 5, 2024)
-      </p>
-      <p>
-        <strong>Technologies Used:</strong> Python, Machine Learning libraries (TensorFlow, PyTorch, Pandas, NumPy, Scikit-learn), and deep learning models for clustering.
+        During the Infosys Springboard Internship, techniques such as supervised/semi-supervised learning, PCA, t-SNE, XGBoost, and statistical analysis were applied.
       </p>
     </div>
   </div>
   
-  <!-- Job Listing Portal Modal -->
+  <!-- Job Portal Modal -->
   <div id="project-job" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('project-job')">&times;</span>
-      <h2>Job Listing Portal (MERN Stack)</h2>
+      <h2>Job Portal (Internship Project)</h2>
       <p>
-        Develop a job search platform with user authentication and job application features.
+        Built a full‑stack portal with robust backend database management, efficient API integrations, and a responsive frontend.
       </p>
       <p>
-        Implement job filtering, AI-powered job recommendations, and resume parsing.
+        The project emphasized API integration, database management, and front‑end optimization during the Infotact Solutions Internship.
+      </p>
+    </div>
+  </div>
+  
+  <!-- Biometric Auto-Transaction Modal -->
+  <div id="project-atm" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project-atm')">&times;</span>
+      <h2>Biometric Auto-Transaction Machine (IoT College Project)</h2>
+      <p>
+        Developed a fingerprint‑based ATM that integrates IoT hardware and software for secure transactions.
       </p>
       <p>
-        <strong>Current Role:</strong> Full Stack Web Development Intern at Infotact Solutions (December 25, 2024 – March 25, 2025)
-      </p>
-      <p>
-        <strong>Features Implemented/Planned:</strong> User Authentication & Profile Management, Job Listings & Search (with filters and sorting), Job Application Tracking & Submission, Full-screen Job Details Page, Dashboards for job seekers and employers, and an Admin Panel.
-      </p>
-      <p>
-        <strong>Tech Stack:</strong> MERN (MongoDB, Express.js, React.js, Node.js), MUI, Datagrid, and Cookies.
+        This project combined hardware interfacing (Arduino, fingerprint sensor) with software development to enhance transaction security.
       </p>
     </div>
   </div>
   
   <!-- AOS Library Script -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Particles.js Library -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    // Initialize AOS
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true
+    // Initialize Particles.js for an interactive background
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": { "enable": true, "value_area": 800 }
+        },
+        "color": { "value": "#007BFF" },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#000000" },
+          "polygon": { "nb_sides": 5 },
+          "image": { "src": "", "width": 100, "height": 100 }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#007BFF",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        },
+        "modes": {
+          "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+          "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 },
+          "repulse": { "distance": 200, "duration": 0.4 },
+          "push": { "particles_nb": 4 },
+          "remove": { "particles_nb": 2 }
+        }
+      },
+      "retina_detect": true
     });
+    
+    // Initialize AOS
+    AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
     
     // Toggle Light/Dark Mode using the Bulb Icon
     const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
+    themeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); });
     
     // Modal Functionality
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = 'block';
-    }
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
-    }
+    function openModal(modalId) { document.getElementById(modalId).style.display = 'block'; }
+    function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
     
     // Intersection Observer fallback for sections
     const sections = document.querySelectorAll('section');
@@ -712,9 +782,7 @@
         }
       });
     }, observerOptions);
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+    sections.forEach(section => { observer.observe(section); });
   </script>
 </body>
 </html>
